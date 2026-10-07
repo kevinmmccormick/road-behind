@@ -26,8 +26,8 @@ and incomplete status after a failed pipeline stage.
 
 Temporary test files use unique directories under ignored local-only/tests and
 are removed after each test. No fixture contains copied CD-ROM content. OCR is
-not exercised by the portable suite. The GitHub workflow is configured for
-Windows/Linux and Python 3.10/3.14; no hosted run has been verified yet.
+not exercised by the portable suite. The [GitHub workflow](https://github.com/kevinmmccormick/road-behind/actions/runs/37658607025)
+passed all four Windows/Linux and Python 3.10/3.14 combinations on October 7, 2026.
 
 ## Local verification: 2026-10-07
 

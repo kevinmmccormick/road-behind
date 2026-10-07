@@ -1,7 +1,7 @@
 # Publication preparation: 2026-10-07
 
-Project name: **Road Behind**. Intended repository:
-`kevinmmccormick/road-behind`. GitHub name availability has not been confirmed.
+Project name: **Road Behind**. Published public repository:
+[kevinmmccormick/road-behind](https://github.com/kevinmmccormick/road-behind).
 License: MIT for project source, synthetic tests, and documentation.
 
 ## Scope and provenance
@@ -50,28 +50,20 @@ marks its report complete only after requested outputs are successfully written.
 
 ## Publication status
 
-The initial session blocked Git staging and outbound GitHub access. After the
-owner revised the permission model, staging and authenticated GitHub access
-succeeded. The staged inventory contains exactly 19 approved source and
-documentation files; no local-only material is included. Publication is in
-progress; the result and hosted validation will be recorded after the push.
+Published publicly on October 7, 2026. After the owner revised the permission
+model, Git staging and authenticated GitHub access succeeded. Initial source
+commit: `e0c419dcee24d9c1b2f00db08c5c07476d45b7c7`.
 
-When running in a session that permits Git metadata writes and GitHub access:
+The index and reachable history audit passed with exactly 19 approved project
+files. GitHub's published tree was checked; local-only, original media, extracted
+assets, PDFs, and OCR text are absent. GitHub identifies the license as MIT.
 
-```powershell
-python scripts/check_publication.py --workspace-only
-python -m unittest discover -s tests -v
-git add --all
-python scripts/check_publication.py
-git diff --cached --check
-git diff --cached
-git commit -m "Prepare Road Behind extractor and reproduction tools"
-python scripts/check_publication.py
-gh repo create kevinmmccormick/road-behind --public --source . --remote origin --push --description "Extract and revisit the OMT contents of The Road Ahead companion CD-ROM"
-```
+The initial [Verify run](https://github.com/kevinmmccormick/road-behind/actions/runs/37658607025)
+passed on Windows and Linux with Python 3.10 and 3.14. Each job runs syntax
+compilation, the 15 synthetic tests, and the publication inventory/history check.
+The repository has no stable release tag or bundled media release.
 
-Review the staged diff before committing. If the intended repository already
-exists, inspect its ownership and contents before selecting a remote or another
-name. After pushing, verify repository visibility, published file inventory,
-and the Windows/Linux CI results. Keep release artifacts source-only. There
-is no stable release tag in this cleanup.
+For subsequent publication, run the checks documented in testing.md, inspect
+the staged diff, commit only reviewed changes, and push main. Keep release
+artifacts source-only. The fixed allowlist must be deliberately updated when
+adding a new project file; never bypass it to include local source media.
