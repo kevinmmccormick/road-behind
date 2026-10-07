@@ -1,0 +1,36 @@
+# Ignore everything by default. Publish only reviewed source and documentation.
+/*
+!/.gitignore
+!/.gitattributes
+!/omt_extract.py
+!/README.md
+!/LICENSE
+!/COPYRIGHT
+!/THIRD_PARTY_NOTICES.md
+!/CONTRIBUTING.md
+!/SECURITY.md
+!/tests/
+/tests/*
+!/tests/test_omt_extract.py
+!/docs/
+/docs/*
+!/docs/format.md
+!/docs/testing.md
+!/docs/publication.md
+!/scripts/
+/scripts/*
+!/scripts/check_publication.py
+# Never publish local source media, derivatives, or backups.
+/local-only/
+**/__pycache__/
+*.pyc
+
+!/omt_imgtext_to_pdf_ocr_md.py
+!/reproduce.py
+!/docs/reproduction.md
+!/tests/test_pipeline.py
+!/.github/
+/.github/*
+!/.github/workflows/
+/.github/workflows/*
+!/.github/workflows/test.yml
