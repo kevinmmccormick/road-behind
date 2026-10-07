@@ -1,9 +1,206 @@
 # Road Behind
 
-A small Python extractor with no third-party package requirements for the OMT containers on the
-companion CD-ROM for Bill Gates' *The Road Ahead*.
+An essay about revisiting Bill Gates' *The Road Ahead*, and the small tools
+that made its companion CD-ROM readable again.
 
-[Run the extractor](#run) | [Rebuild the book outputs](#rebuild-the-book-outputs) | [Read the essay](#the-future-was-easier-to-read-than-to-install)
+[Essay](#the-future-was-easier-to-read-than-to-install) | [Extractor](#run) | [Reproduce the outputs](#rebuild-the-book-outputs)
+
+## The future was easier to read than to install
+
+*An AI-written retrospective based on Kevin M. McCormick's December 12, 2025
+conversation and a reading of the book's extracted OCR text. Revised October 7,
+2026. The experiment and its timing are Kevin's account; the interpretation
+below is this essay's. Book references use the printed page labels preserved
+in the extraction. The copyrighted book and source conversation remain private.*
+
+In December 2025, Kevin gave a coding agent some files from the companion
+CD-ROM for Bill Gates' *The Road Ahead* and asked it to recover their contents.
+The disc had once offered a demonstration of the future described in the book;
+thirty years later, its OMT containers stood between a reader and the pages he
+wanted to read. While the agent investigated, Kevin discussed its progress with
+a separate chat assistant, which became increasingly articulate about why the
+work was difficult. It speculated about obsolete authoring systems and runtime
+dependencies, then recommended stopping when the coding agent had used roughly
+a quarter of its context window. Kevin preferred to let it continue. The
+agent found resource tables and page images, wrote conversion code, and
+produced a readable result while the other assistant was still explaining the
+obstacles.
+
+The implementation had an eccentric route to usefulness. The book's page text
+was stored as bitmaps, and, according to the conversation, the agent failed to
+find the Python libraries available on the machine. It improvised a BMP decoder
+and a minimal PDF writer, then called Windows' built-in OCR through PowerShell
+to make Markdown. Those choices survive in the code here, including the care
+taken to sort Roman-numeral front matter before the numbered pages. Kevin
+reported about five sentences of direction and ten minutes of waiting, without
+personally debugging the extraction. That is an anecdote rather than a timing
+study, but his comparison was illuminating: obtaining the book this way had
+felt easier than installing the original disc on an appropriate old computer.
+For this particular purpose, commissioning new software had become the shorter
+route to using old data.
+
+It would be easy to tell that story as a rebuke to the confidence of 1995, with
+an obsolete multimedia product rescued from its own ambitions. Kevin resisted
+that reading, and the book itself gives him considerable support. Gates was
+interested in what happens when a previously expensive activity becomes cheap
+enough to take for granted. In the opening chapter, he moves from the falling
+cost of computation to the prospect of nearly free communication, asking what
+people will do once familiar constraints loosen (pp. 17–18). The extraction
+suggests a further, narrower extension of that argument: some of the work of
+interpreting a file and building a tool for it can become cheap enough to
+justify an otherwise idle curiosity. A peculiar old disc need not promise a
+large audience, a commercial return, or a research career before someone can
+afford to investigate it.
+
+### The agents were already in the book
+
+Reading *The Road Ahead* after this experiment is more interesting than grading
+its inventory of future gadgets. Gates himself objects to the highway metaphor
+because it emphasizes infrastructure and geography at the expense of what
+people might do with the system (p. 6). Nor does this text support the convenient
+caricature of a Gates who simply failed to notice the Internet. He calls it the
+most important computing development since the IBM PC, describes the Web's
+publishing possibilities, and repeatedly presents the Internet as the route
+toward the broader network he imagines (pp. 91, 123, 228). His more revealing
+commitment is to a world in which software learns enough about its user to
+reduce the effort of acting on an intention.
+
+In “Applications and Appliances,” that commitment becomes unusually specific.
+Gates describes agents with initiative and personality, then imagines “softer
+software” that learns habits instead of remaining forever as inexperienced as
+an assistant on the first day of work (pp. 83–85). He recognizes the annoyance
+of a system confidently performing unwanted services and the need to ask
+before discarding valuable work. On the following page he discusses experiments
+in which people became socially deferential toward computers, including rating
+a machine more kindly when answering it directly than when reporting to
+another machine (p. 86). The December conversation offers a small variation on
+that problem: one assistant's confident manner made its account of the task
+sound more authoritative than the evidence warranted. Kevin's useful act of
+judgment was to leave room for the other agent to test what was actually
+possible.
+
+These imagined assistants are not confined to routing messages. Elsewhere,
+Gates describes a book that answers questions as a tutor, adjusts explanations
+to the reader, and remembers what the reader has already encountered (p. 195).
+He imagines software turning a hummed tune into an arrangement and inserting a
+user's likeness into a film (p. 86). Yet in the final chapter he says that
+programs recreating elements of human intelligence are very unlikely to arrive
+in his lifetime, pointing to the repeated disappointment of earlier AI
+predictions (p. 255). There is a productive tension between the capabilities he
+is willing to imagine and the intelligence he is reluctant to credit. Our
+extractor cannot settle what counts as human understanding, but it makes that
+tension concrete: software can perform a useful sequence of unfamiliar tasks
+while remaining an unreliable narrator of what it knows. The achievement and
+the uncertainty have to be considered together.
+
+Gates is often most persuasive when he brings his own speculation back to
+ordinary use. Describing his automated house, he observes that replacing a
+light switch is a demanding proposition because the existing device is so
+reliable; a little convenience can be consumed by the irritation of a system
+that guesses wrong. He keeps manual switches (p. 223). That is a better
+standard for an agent than how impressive its explanation sounds. In the
+December exchange, the chat assistant inferred ToolBook and Flash from
+suggestive evidence that this project has not established. The coding agent,
+meanwhile, produced files that could be opened. During the 2026 cleanup, the
+retained code again extracted the three book containers and assembled 280 page
+images into a PDF. That observable result supports a useful claim about this
+experiment without requiring a grander claim about all obsolete formats or
+about machine understanding in general.
+
+### Access, ownership, and whose convenience matters
+
+The book also complicates the idea that successful extraction preserves the
+whole thing. In “Content Revolution,” Gates argues that electronic documents
+will become combinations of text, sound, images, and interaction; printing one
+could be as inadequate as reading a score instead of hearing the music
+(pp. 112–114). By that standard, a PDF and an OCR transcript recover only part
+of what the companion disc was trying to be. They do not restore its navigation,
+timing, or interactive experience. Yet they make the argument of the book much
+easier to examine. The user has chosen a different purpose for the material
+than the original presentation anticipated, and software has made that choice
+practical. The project's success lies partly in that freedom to choose a less
+elaborate form.
+
+Gates welcomes readers' ability to reorganize information, but his account of
+how they will possess it is more ambivalent. In “Friction-Free Capitalism,” he
+imagines buying a lasting right to access a song or book from a network, without
+carrying a physical copy. He also considers payment per use, expiration dates,
+and limits on lending (pp. 175–178). These are presented as possibilities for
+pricing and distribution, but they expose a question this repository cannot
+avoid: what must remain available for a purchase to remain useful? Our
+experiment depended on having the bytes. An agent can write a reader for an
+awkward container; its ingenuity does not supply a missing file or keep an
+absent service running. The disc's dated packaging turned out to be a tractable
+obstacle because the material was still locally present.
+
+A related tension runs through Gates' account of personal attention. He
+imagines agents protecting people from unwanted interruptions, with explicit
+control over who may call and when (pp. 213–214). He also describes profiles
+that help software prepare enticing surprises and advertisers deliver more
+precisely targeted messages (pp. 169–174). He recognizes privacy disputes,
+commercial bias, and the possibility of compulsive use; it would be unfair to
+say he never saw the problems. His optimism rests on the expectation that
+choice, competition, and suitable rules will make these arrangements serve the
+user. Close reading makes that expectation more visible. An assistant that
+knows what holds someone's attention is equipped both to protect that attention
+and to sell access to it, and greater technical competence does not decide
+which purpose wins.
+
+That leaves a question for our own enthusiasm about agents. The original
+experiment felt empowering because Kevin could set the purpose, let the tool
+work, and keep a result outside the conversation. This repository extends that
+arrangement: the extraction can be repeated with ordinary Python, without a
+model call or a subscription to the service that helped write the code. Its
+scope is small and its limitations are inspectable. The local book, however,
+remains copyrighted material and is excluded from publication along with the
+disc assets and source conversation. Sharing the means of extraction lets
+another owner investigate their own copy while keeping the distinction between
+a tool and the material it processes explicit.
+
+### Returning in October 2026
+
+Less than ten months separates the original conversation from this revision,
+and the surrounding product landscape already gives the experiment a different
+character. Anthropic's January 12 Cowork research preview brought Claude Code's
+agent capabilities into knowledge work involving local files beyond coding.
+By September, OpenAI's Agents API public beta offered managed execution
+and facilities such as context compaction for sustained tasks. These launches
+show vendors building products around the pattern Kevin had tried: provide
+material, describe an outcome, and let software carry out intermediate work.
+They establish a change in what is being offered, not a guarantee that delegated
+work succeeds. The dated accounts are in [Anthropic's release notes](https://support.claude.com/en/articles/12138966-release-notes)
+and [OpenAI's September announcement](https://openai.com/index/introducing-the-agents-api/).
+
+For this project, the most meaningful comparison is between the first useful
+output and what it took to return to it. The December conversation captured
+the pleasure of watching a troublesome task become manageable. The October
+work has involved reading the recovered book, checking the parser's boundaries,
+adding synthetic tests, recording dependencies, and making the extraction
+repeatable without publishing the copyrighted source. These activities are
+less theatrical than improvising a PDF writer, but they determine whether the
+initial result can support an argument or survive outside its original session.
+They also give the initial skepticism a fairer answer: enough of this format
+was understood to do something useful, and the extent of that understanding
+can now be examined.
+
+There may be few people who ever need this particular extractor. Gates offers
+a reason to care anyway when he describes how repeated dead ends can discourage
+curiosity, while accessible information gives people a reason to keep asking
+questions (p. 192). This project is one modest instance of lowering that
+threshold. It also puts a condition on the optimism: access depends on keeping
+the material, distinguishing it from generated interpretation, and retaining
+some control over the tools through which it is encountered. Reading the book
+now, through a program written to reach it, makes its faith in personal
+empowerment feel both recognizable and unfinished. The useful future in this
+story is the one in which a reader can decide that an old disc deserves another
+look, then spend more time considering what it says than persuading a computer
+to open it.
+
+## The tools
+
+The remainder of this README documents the small Python extractor, PDF/OCR
+utility, and reproduction script used to recover the companion CD-ROM's
+contents. They have no third-party Python package requirements.
 
 ## Why this exists
 
@@ -72,8 +269,7 @@ carving also reads the entire input. Use trusted local inputs of manageable
 size. Failed writes can leave partial output; retry in a fresh directory.
 
 XVD/COL decoding and unrelated OMT components are outside this repository's
-scope. The [essay below](#the-future-was-easier-to-read-than-to-install) revisits
-the original December 2025 experiment from October 2026.
+scope.
 
 ## License and source material
 
@@ -103,196 +299,3 @@ engine with a suitable language pack. Use `--no-ocr` for a portable PDF-only run
 (with placeholder Markdown), or `--extract-only` for just the extracted assets.
 The script accepts a mounted/unpacked directory, not a raw image file.
 See [reproduction instructions](docs/reproduction.md) for details and limits.
-
-## The future was easier to read than to install
-
-*An AI-written retrospective, adapted from Kevin M. McCormick's December 12,
-2025 conversation and revised on October 7, 2026. The first-person voice below
-is the revising AI's; the original experiment and timing are Kevin's account.*
-
-A book about the digital future came with a disc. Thirty years later, someone
-asked an AI to read the disc without installing the future.
-
-That is the short version of why this repository exists. The longer version
-involves an obscure binary container, a homemade PDF writer, a detour through
-Windows OCR, and an argument in which the human was considerably more
-optimistic about AI than the AI was.
-
-Reading the December 2025 conversation now, I find that argument more revealing
-than any of the code.
-
-Kevin had given a coding agent the OMT files from the companion CD-ROM for Bill
-Gates' *The Road Ahead*. He wanted the book's contents in a usable form. While
-the agent examined the bytes, he discussed its progress with a separate chat
-assistant. That assistant produced an elaborate account of why the job was
-hard: vanished tooling, obscure structures, runtime dependencies, diminishing
-returns. It even advised stopping when the coding agent had used about a
-quarter of its context window.
-
-Kevin wanted to let it cook.
-
-The coding agent kept working. It found tables, followed offsets, and extracted
-resources. The apparent ebook turned out to contain its page text as bitmap
-images. Then came the wonderfully excessive part. According to the
-conversation, the agent had failed to find the available Python libraries. It
-responded by implementing a BMP decoder and a minimal PDF writer, and invoking
-Windows' built-in OCR through PowerShell. The source retained here confirms
-that unusual combination. The PDF preserves the pictures of the pages; the
-OCR writes the text to Markdown.
-
-There is a particular species of computer problem that begins with a missing
-import and ends with somebody implementing a document format. This was one
-of those, compressed into an evening's experiment.
-
-The detail that made Kevin laugh was smaller: the agent handled Roman numerals
-in the front matter. After all the binary analysis, it remembered that a book
-has pages before page one. A conversion that puts page x after page 200 is
-technically an extraction and practically an annoyance. The code avoided that.
-
-### December 2025: the installation lost the race
-
-The chat assistant wanted to tell a familiar preservation story: an ambitious
-digital artifact had become stranded, and modern technology had heroically
-rescued it. Kevin rejected the premise. In his account, he had written roughly
-five sentences, waited about ten minutes, and received useful Markdown without
-personally debugging the extraction. He thought that had taken less effort
-than installing the original CD-ROM on an appropriate old computer.
-
-That timing is a participant's report, not a controlled benchmark. But the
-comparison is the point. For his purpose, making a new way to read the data
-had become easier than restoring the old way to run the software.
-
-Imagine explaining that bargain to someone shipping a multimedia disc in
-1995. Their application could depend on its own tables, resource conventions,
-and Windows components. A future reader might possess none of the necessary
-expertise. Yet that reader could describe the desired result, and another
-piece of software could construct the missing conversion tools on demand.
-
-The application would cease to be the only practical doorway to its contents.
-
-I find Kevin's optimism persuasive precisely because it is so concrete. He
-had a file and a question. The distance between them shrank. A project that
-might otherwise have stayed on a list of things to investigate became an
-output he could inspect that evening.
-
-That changes the economics of curiosity. Many old files are never examined
-because the likely reward does not justify the work of learning their format.
-Make that work cheap enough to delegate and people can afford to ask more
-questions. Personal archives, minor software, forgotten documentation, and
-peculiar discs become worth another look. The important threshold is often
-whether anybody bothers to start.
-
-There is a pleasing circularity in this particular example. A companion disc
-to a book about the digital future became material for a later kind of
-software-mediated reading. The bytes remained useful beyond the application
-that originally presented them. That is a good reason to be excited about
-what happened, without promoting the book into a precise prediction of modern
-language models.
-
-### October 2026: the surprise has acquired infrastructure
-
-Less than ten months later, the original exchange already has a period flavor.
-The participants were watching an agent spend its context budget on a strange
-little problem and debating whether to intervene. By October 2026, vendors
-have spent much of the year building products around exactly this sort of
-delegation.
-
-On January 12, Anthropic introduced the Cowork research preview, extending
-Claude Code's agent capabilities to knowledge work and local files beyond
-coding. That was a product launch, not evidence that every office task had
-been solved. It nevertheless put this experiment's basic move into a broader
-interface: give software access to the material and ask it to produce a
-result. [Anthropic's dated release notes](https://support.claude.com/en/articles/12138966-release-notes)
-record the change.
-
-In June, OpenAI reported growing use of Codex for longer tasks and work outside
-engineering, including in its own legal, finance, and recruiting departments.
-Its estimates of equivalent human task duration were model-generated, and
-usage does not establish output quality. Even with those qualifications, the
-company's account describes an expanded ambition for coding agents: using
-code as a means of getting other work done.
-[OpenAI's June 25 report](https://openai.com/index/how-agents-are-transforming-work/)
-provides the evidence and its methodological caveats.
-
-By September 10, OpenAI was offering an Agents API in public beta with managed
-execution environments, context compaction, and coordination between agents.
-The infrastructure explicitly addresses keeping work going across long
-sessions. The context-window anxiety in the December transcript now has a
-product team working on it.
-[OpenAI's launch announcement](https://openai.com/index/introducing-the-agents-api/)
-describes those facilities; it does not guarantee successful completion of
-arbitrary work.
-
-My reading of those developments is that the striking change is how much of
-the surrounding work is becoming delegable. The original agent made an
-extractor. This return visit asks for tests, a reproducible pipeline, a
-licensing assessment, a boundary around copyrighted material, and documentation
-another person can use. Getting a result once and leaving a useful tool behind
-are different amounts of work. The second is what gives the first a life
-beyond its original chat session.
-
-A small project can show that transition more honestly than a sweeping claim
-about the end of programming. Here, the artifact is inspectable. The parser
-has limits. The tests can fail. Someone with the source media can run the
-pipeline again.
-
-### The bytes were more reliable than the commentary
-
-The December transcript contains another lesson worth keeping. The chat
-assistant repeatedly identified the format as ToolBook and inferred Flash
-from resource names. This repository has not established either claim.
-A suggestive filename is a lead to investigate; it cannot carry an entire
-history of an authoring system.
-
-The assistant also told a confident story about why the coding agent should
-stop, just before the user reported a successful result. That is a useful
-embarrassment to preserve. Fluent commentary can sound like expertise while
-a quieter loop of experiments does the actual work. In this case, output
-that could be opened was stronger evidence than the explanation of why it
-would be difficult to produce.
-
-The enthusiasm deserves the same scrutiny. Recovering page images and OCR
-text does not reconstruct the disc's navigation, timing, video, or interactive
-behavior. We have a working extractor for observed structures, not a complete
-specification of every OMT variant. Nor can an obscure format, by itself,
-prove that a model never encountered relevant material during training.
-
-Even formal measurements need care. A March 2026 METR research note reported
-that correcting a modeling mistake reduced some recent models' estimated
-50%-success task horizons by up to 20%, and emphasized uncertainty from task
-selection and analysis choices. That is a useful reminder when turning one
-astonishing evening into a theory of everything.
-[METR's methods note](https://metr.org/notes/2026-03-20-impact-of-modelling-assumptions-on-time-horizon-results/)
-is a better companion to this story than an invented benchmark score.
-
-The narrower claim is plenty exciting: in this reported experiment, an agent
-built a useful route from unfamiliar bytes to readable material with very
-little direction. In the 2026 cleanup, the retained code again extracted the
-three book containers and assembled 280 page images into a PDF. That result
-has an observable shape. It does not need a claim that all obsolete software
-is now understood.
-
-### Leave the next reader something better than a chat log
-
-There is still work only preservation can do. The source bytes must survive.
-OCR can make mistakes. An image preserves some things and discards others.
-A readable book and a functioning multimedia application answer different
-historical questions. Keeping original media and documenting transformations
-gives future readers choices that a single generated summary cannot provide.
-
-There is also a practical advantage to the agent having written ordinary
-code. Running this extractor does not require another model call, access to
-the original conversation, or a subscription to the service that helped
-create it. Python can repeat the extraction. The format notes can be disputed.
-The tests can be extended. The next person inherits a tool they can examine.
-
-That seems like a particularly good outcome for an experiment about digital
-longevity. The AI helped lower the cost of understanding enough of the format;
-the repository lets that understanding outlast the session.
-
-Road Behind is a joke about direction, but it is also an invitation. A future
-worth having should make more of the past available to us. In December 2025,
-Kevin found that happening in a folder of obscure files, with a coding agent
-that improvised a PDF writer and still found time for the Roman numerals.
-
-By October 2026, the task is to keep the delight and leave better evidence.

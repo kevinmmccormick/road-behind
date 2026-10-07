@@ -17,10 +17,12 @@ No third-party Python package or bundled library was found. See the
 Included: OMT extractor, the existing PDF/Windows OCR companion utility, a new
 mounted-disc reproduction script, synthetic tests, CI, and documentation.
 Excluded: unrelated formats/components and all disc content or derivatives.
-The README includes a revised essay based on the owner-supplied December 2025
-conversation, with dated primary sources for the October 2026 comparison. The
-source conversation PDF and its extracted text remain under local-only; no
-book excerpts or conversation dump are in the publication inventory.
+The README leads with a revised essay based on the owner-supplied December 2025
+conversation and a complete reading of the locally extracted book OCR, with
+page references for commentary and dated primary sources for the October 2026
+comparison. The essay contains original criticism and a brief attributed phrase.
+The source conversation PDF, its extracted text, and the book OCR remain under
+local-only; no source document or substantial excerpt is published.
 
 ## Local material boundary
 
